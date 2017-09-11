@@ -55,17 +55,17 @@ var info = {
             "releaseDate": "2017-04-23T18:25:43.511Z"
         }
     }
-};
+}
 // initialise
-let objCategoryList = {};
-let arProductList = [];      
+var objCategoryList = {};
+var arProductList = [];      
 Object.keys(info.items).forEach(function(key) {        
     // get first character
     var strFirstChar = key.charAt(0)
     // if character c, assign as category
     if (strFirstChar === 'c') {
         // assign  list
-        objCategoryList[key] = {...info.items[key], products: []}
+        objCategoryList[key] = Object.assign(info.items[key], {products: []})
     } else if (strFirstChar === 'p') {
         // push to products array
         arProductList.push(info.items[key])
@@ -88,7 +88,7 @@ arProductList.forEach(function(item) {
     }
 })
 // initialise final content
-let strHtmlContent = "";
+var strHtmlContent = "";
 // loop through
 Object.keys(objCategoryList).forEach(function(key) {
     // get html content
@@ -100,7 +100,7 @@ Object.keys(objCategoryList).forEach(function(key) {
  */
 function buildCategoryListDisplay(categoryList) {
     // initiliase
-    let productsListHtml = ""
+    var productsListHtml = ""
     // loop through products
     categoryList.products.forEach(function(item){
         // build single product html
